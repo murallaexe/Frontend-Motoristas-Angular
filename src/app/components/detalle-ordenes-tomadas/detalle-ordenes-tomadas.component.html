@@ -5,10 +5,17 @@
                 <h5 class="titles">Detalles Del Pedido</h5>
                 <h6><a class="titles">Orden: </a>543532234</h6>
                 <h6><a class="titles">Origen: </a>Pizza Hut Aeropuerto</h6>
-                <h6><a class="titles">Estado Pedido: </a>En origen</h6>
+                <h6><a class="titles">Estado Pedido: </a></h6>
+                <select class="form-select form-select-sm select-estado" aria-label=".form-select-sm example">
+                    <!-- <option selected>Open this select menu</option> -->
+                    <option value="1">Tomada</option>
+                    <option value="2">En camino</option>
+                    <option value="3">En el origen</option>
+                    <option value="3">En el destino</option>
+                </select>
                 <h6><a class="titles">Descripcion Pedido</a></h6>
                 <p> Pedido de Combo #4, pizza gigante con alitas</p>
-                <p>Comprado el 12/12/12 12:52:23 pm</p>
+                <p><strong>Comprado el 12/12/12 12:52:23 pm</strong></p>
             </div>
         </div>
         <div class="col-12 mt-4">
@@ -49,7 +56,7 @@
         </div>
         <div class="col-12 mt-4 mb-4">
             <button type="button" class="btn btn-tomar-pedido"> Atras</button>
-            <button type="button" class="btn btn-tomar-pedido ml-2"> Tomar Pedido</button>
+            <button type="button" class="btn btn-tomar-pedido ml-2"> Guardar</button>
         </div>
     </div>
 </div>

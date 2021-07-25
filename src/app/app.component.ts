@@ -15,7 +15,7 @@ export class AppComponent {
     console.log(this.regionVisible);
   }
 
-  verDetalleOrden(e:any){
+  verDetalleOrdenTomada(e:any){
     this.regionVisible = e;
     console.log('AppComponent:' , e);
   }
@@ -26,5 +26,11 @@ export class AppComponent {
 
   verOrdenesEntregadas(e:any){
     this.regionVisible = e;
+  }
+
+  verDetalleOrdenDisponible(e:any){
+    this.regionVisible = e;
+    console.log('regionVisible AppComponent:', e
+    );
   }
 }
