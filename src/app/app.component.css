@@ -1,0 +1,7 @@
+.visible{
+    display: block;
+}
+
+.noVisible{
+    display: none;
+}

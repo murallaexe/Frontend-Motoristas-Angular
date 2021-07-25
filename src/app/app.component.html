@@ -1,1 +1,10 @@
+<app-header></app-header>
+<app-ordenes-disponibles (onVerOrdenes)="verOrdenes($event)" [ngClass]="{'visible':regionVisible == 'ordenesDisponibles', 'noVisible':regionVisible!= 'ordenesDisponibles'}"></app-ordenes-disponibles>
+<!-- <app-ordenes-disponibles [ngClass]="{'visible':regionVisible == 'ordenesDisponibles', 'noVisible':regionVisible!= 'ordenesDisponibles'}"></app-ordenes-disponibles> -->
+<app-ordenes-tomadas (onVerDetalleOrden)="verDetalleOrden($event)" [ngClass]="{'visible':regionVisible == 'ordenesTomadas', 'noVisible':regionVisible!= 'ordenesTomadas'}"></app-ordenes-tomadas>
+<app-detalle-orden [ngClass]="{'visible':regionVisible == 'detalleOrden', 'noVisible':regionVisible!= 'detalleOrden'}"></app-detalle-orden>
+<app-ordenes (onOrdenesTomadas)="verOrdenesTomadas($event)" (onOrdenesEntregadas)="verOrdenesEntregadas($event)" [ngClass]="{'visible':regionVisible == 'ordenes', 'noVisible':regionVisible!= 'ordenes'}"></app-ordenes>
+<app-ordenes-entregadas [ngClass]="{'visible':regionVisible == 'ordenesEntregadas', 'noVisible':regionVisible!= 'ordenesEntregadas'}"></app-ordenes-entregadas>
 <router-outlet></router-outlet>
+
+<!-- detalleOrden -->

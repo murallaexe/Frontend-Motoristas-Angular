@@ -3,14 +3,33 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { HeaderComponent } from './components/header/header.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { OrdenesDisponiblesComponent } from './components/ordenes-disponibles/ordenes-disponibles.component';
+import { OrdenesTomadasComponent } from './components/ordenes-tomadas/ordenes-tomadas.component';
+import { DetalleOrdenComponent } from './components/detalle-orden/detalle-orden.component';
+import { OrdenesComponent } from './components/ordenes/ordenes.component';
+import { OrdenesEntregadasComponent } from './components/ordenes-entregadas/ordenes-entregadas.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HeaderComponent,
+    SidebarComponent,
+    OrdenesDisponiblesComponent,
+    OrdenesTomadasComponent,
+    DetalleOrdenComponent,
+    OrdenesComponent,
+    OrdenesEntregadasComponent
+    
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgbModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

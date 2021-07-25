@@ -1,0 +1,43 @@
+.body{
+    background-color: #f8f9fa;
+}
+.footer{
+    padding: 0!important;
+}
+
+.cd{
+    background-color: #fff1f5;
+}
+
+.btn-pedido{
+    background-color: #fb1d5a;
+}
+
+.title{
+    color: #FB1D5A;
+    font-weight: 900;
+    font-size: 24px;
+    text-align: center;
+}
+
+.ttd{
+    color: #8A0017;
+    font-weight: 900;
+    font-size: 15px;
+    text-align: center;
+}
+
+.info{
+    font-size: smaller;
+}
+
+.hola{
+    font-size: x-large;
+    font-weight:bold ;
+}
+
+.btn-ordenes{
+    color: #fff;
+    background-color: #fb1d5a;
+    border-color: #fb1d5a;
+}
