@@ -13,6 +13,7 @@ import { DetalleOrdenComponent } from './components/detalle-orden/detalle-orden.
 import { OrdenesComponent } from './components/ordenes/ordenes.component';
 import { OrdenesEntregadasComponent } from './components/ordenes-entregadas/ordenes-entregadas.component';
 import { DetalleOrdenesTomadasComponent } from './components/detalle-ordenes-tomadas/detalle-ordenes-tomadas.component';
+import { FooternavComponent } from './components/footernav/footernav.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { DetalleOrdenesTomadasComponent } from './components/detalle-ordenes-tom
     DetalleOrdenComponent,
     OrdenesComponent,
     OrdenesEntregadasComponent,
-    DetalleOrdenesTomadasComponent
+    DetalleOrdenesTomadasComponent,
+    FooternavComponent
     
   ],
   imports: [

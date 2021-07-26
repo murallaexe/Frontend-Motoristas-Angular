@@ -2,3 +2,10 @@
     background-color:#fb1d5a ;
     color: white;
 }
+
+.title{
+    color: #FB1D5A;
+    font-weight: 900;
+    font-size: 24px;
+    text-align: center;
+}
