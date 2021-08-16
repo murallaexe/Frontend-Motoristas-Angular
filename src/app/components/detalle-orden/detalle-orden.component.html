@@ -1,24 +1,27 @@
 <div class="container">
-    <div class="row">
+    <div class="row" *ngFor="let detalle of ordenesDetallesArray">
         <div class="col-12 mt-4">
             <div class="bd">
                 <h5 class="titles">Detalles Del Pedido</h5>
-                <h6><a class="titles">Orden: </a>543532234</h6>
-                <h6><a class="titles">Origen: </a>Pizza Hut Aeropuerto</h6>
+                <h6><a class="titles">Orden: </a>{{detalle.idOrden}}</h6>
+                <h6><a class="titles">Empresa: </a>{{detalle.empresa}}</h6>
+                <h6><a class="titles">Producto: </a>{{detalle.producto}}</h6>
                 <h6><a class="titles">Estado Pedido: </a>En origen</h6>
                 <h6><a class="titles">Descripcion Pedido</a></h6>
-                <p> Pedido de Combo #4, pizza gigante con alitas</p>
-                <p>Comprado el 12/12/12 12:52:23 pm</p>
+                <p>{{detalle.descripcionPedido}}</p>
+                <h6><a class="titles">Cantidad: </a> {{detalle.cantidadProducto}}</h6>
+                <h6><a class="titles">Fecha entrega: </a> {{detalle.tiempoEntrega}}</h6>
+                <!-- <p>Entrega el </p> -->
             </div>
         </div>
         <div class="col-12 mt-4">
             <div class="bd">
                 <h5 class="titles">Informacion Cliente</h5>
-                <h6><a class="titles">Nombre: </a>Victor Amaya</h6>
-                <h6><a class="titles">Telefono: </a>9999-9999</h6>
+                <h6><a class="titles">Nombre: </a>{{detalle.nombreCliente}}</h6>
+                <h6><a class="titles">Telefono: </a>{{detalle.telefonCliente}}</h6>
                 <div>
                     <h6 class="titles">Direccion de Envio</h6>
-                    <p>Residencial Santa Cruza, Bloque BB-1 Casa #1</p>
+                    <p>{{detalle.direccioncliente}}</p>
                 </div>
             </div>
         </div>
@@ -27,29 +30,30 @@
                 <div class="row bd">
                     <div class="col-12">
                         <h5 class="titles">Metodo de Pago</h5>
-                        <p>Visa ****</p>
+                        <p>{{detalle.metodoPago}}</p>
+                        <!-- <p>Visa ****</p> -->
                     </div>
                     <div class="col-12">
                         <h5 class="titles">Resumen del Pedido</h5>
                         <div>
-                            <p>Subtotal: Lps.25</p>
+                            <p>Subtotal: Lps. {{detalle.cantidadProducto*detalle.precioProducto+detalle.comision}}</p>
                         </div>
                         <div>
-                            <p>Impuesto: Lps.25</p>
+                            <p>Impuesto: Lps. {{(detalle.cantidadProducto*detalle.precioProducto+detalle.comision)*0.15}}</p>
                         </div>
                         <div>
-                            <p>Comision: Lps.25</p>
+                            <p>Comision: Lps. {{detalle.comision}}</p>
                         </div>
                         <div>
-                            <p>Total: Lps.75</p>
+                            <p>Total: Lps. {{(detalle.cantidadProducto*detalle.precioProducto+detalle.comision)*1.15}}</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="col-12 mt-4 mb-4">
-            <button type="button" class="btn btn-tomar-pedido"> Atras</button>
-            <button type="button" class="btn btn-tomar-pedido ml-2"> Tomar Pedido</button>
+            <button type="button" class="btn btn-tomar-pedido" (click)="irAtras()"> Atras</button>
+            <button type="button" class="btn btn-tomar-pedido ml-2" (click)="TomarPedido()"> Tomar Pedido</button>
         </div>
         <div class="col-sm-12 col-md-4 col-xl-4 ">
             <br><br><br><br>

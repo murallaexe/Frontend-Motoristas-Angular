@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="row" *ngFor="let detalles of ordenTomada">
+    <div class="row" *ngFor="let detalles of ordenEntregada">
         <div class="col-12 mt-4">
             <div class="bd">
                 <h5 class="titles">Detalles Del Pedido</h5>
@@ -7,13 +7,6 @@
                 <h6><a class="titles">Empresa: </a>{{detalles.empresa}}</h6>
                 <h6><a class="titles">Producto: </a>{{detalles.producto}}</h6>
                 <h6><a class="titles">Estado Pedido: </a>{{detalles.estadoOrden}}</h6>
-                <select [(ngModel)]="selecionarCambioEstado" class="form-select form-select-sm select-estado" aria-label=".form-select-sm example">
-                    <!-- <option selected>Open this select menu</option> -->
-                    <option value="tomada">Tomada</option>
-                    <option value="recogida">Recogida</option>
-                    <option value="en camino">En camino</option>
-                    <option value="completada">Completada</option>
-                </select>
                 <h6><a class="titles">Descripcion Pedido</a></h6>
                 <h6><a class="titles">Cantidad: </a> {{detalles.cantidadProducto}}</h6>
                 <h6><a class="titles">Fecha entrega: </a> {{detalles.tiempoEntrega}}</h6>
@@ -58,7 +51,6 @@
         </div>
         <div class="col-12 mt-4 mb-4">
             <button type="button" class="btn btn-tomar-pedido" (click)="irAtras()"> Atras</button>
-            <button type="button" class="btn btn-tomar-pedido ml-2" (click)="Guardarcambio()"> Guardar</button>
         </div>
         <div class="col-sm-12 col-md-4 col-xl-4 ">
             <br><br><br><br>

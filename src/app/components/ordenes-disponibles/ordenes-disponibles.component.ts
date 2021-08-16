@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { faMapMarker } from '@fortawesome/free-solid-svg-icons';
+import { OrdenesService } from 'src/app/service/ordenes.service';
 
 @Component({
   selector: 'app-ordenes-disponibles',
@@ -9,25 +10,49 @@ import { faMapMarker } from '@fortawesome/free-solid-svg-icons';
 export class OrdenesDisponiblesComponent implements OnInit {
   @Output() onVerOrdenes = new EventEmitter();
   @Output() onVerDetalleOrdenDisponible = new EventEmitter();
-
+  nombreMotorista:String="";
   faMapMaker = faMapMarker;
   regionVisible:string=""
-  constructor() { }
+  ordenesArray:any;
+  constructor(
+    private ordenesService:OrdenesService
+  ){ }
 
   ngOnInit(): void {
+    this.ordenesService.obtenerOrdenes().subscribe(
+      res=>{
+        this.ordenesArray = res;
+        // console.log(this.ordenesArray);
+      },
+      error=>{
+        console.log(error);
+      }
+    )
   }
 
   verOrdenes(){
-    console.log('ver region ordenes tomadas');
+    // console.log('ver region ordenes tomadas');
     this.regionVisible="ordenes";
     this.onVerOrdenes.emit(this.regionVisible);
   }
 
   verDetalleOrdenDisponible(idOrden:any){
-    console.log('ver Orden: ', idOrden);
+    var datas;
+    // console.log('ver Orden: ', idOrden);
     this.regionVisible= "detalleOrdenDisponible";
-    this.onVerDetalleOrdenDisponible.emit(this.regionVisible);
-    console.log('region visible:', this.regionVisible);
+    for( let orden of this.ordenesArray){
+      if(orden._id==idOrden){
+        datas=orden;
+      }
+    }
+    // console.log(datas);
+    this.onVerDetalleOrdenDisponible.emit({url:this.regionVisible,data:datas});
+    // console.log('region visible:', this.regionVisible);
   }
-
+  obtenerDataPadre(nombreM:any,data:any){
+    var nombre = nombreM.split(' ') 
+    this.nombreMotorista= nombre[0];
+    //console.log(nombre[0]);
+    
+  }
 }

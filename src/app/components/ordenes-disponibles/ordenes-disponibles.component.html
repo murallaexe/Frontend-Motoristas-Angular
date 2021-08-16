@@ -1,32 +1,32 @@
 <div class="container">
     <div class="row">
         <div class="col-12 mt-4">
-            <h5 class="hola" >Hola Javier!</h5>
+            <h5 class="hola" >Hola {{nombreMotorista}}!</h5>
             <p style="font-weight: 600;">Estos son los pedidos dispobibles</p>
             <button class="btn btn-primary btn-ordenes" (click)="verOrdenes()">Ver ordenes</button>
         </div>
     </div>
     <div class="row">
-        <div class="col-6 col-md-4 col-xl-3 mt-4">
+        <div class="col-6 col-md-4 col-xl-3 mt-4" *ngFor="let orden of ordenesArray">
             <div class="card cd">
                 <div class="card-body">
-                    <h5 class="card-title title mb-0">Pizza Hut</h5>
-                    <p class="card-text ttd">Blv.Morazan</p>
+                    <h5 class="card-title title mb-0">{{orden.empresa}}</h5>
+                    <p class="card-text ttd">{{orden.producto}}</p>
                     <p class="card-text info mb-0">
                         <strong>Precio: </strong>
-                        <span> Lps.400</span>
+                        <span> Lps.{{orden.precioProducto}}</span>
                     </p> 
                     <div class="info">
                         <strong>Hacia:</strong>
-                        Colonia Centro America
+                        {{orden.direccioncliente}}
                     </div>     
                 </div>
                 <div class="card-footer footer">
-                    <a href="#" class="btn btn-primary w-100 btn-pedido" (click)="verDetalleOrdenDisponible(1)">Ver Detalle</a>
+                    <a href="#" class="btn btn-primary w-100 btn-pedido" (click)="verDetalleOrdenDisponible(orden._id)">Ver Detalle</a>
                 </div>
             </div>
         </div>
-        <div class="col-6 col-md-4 col-xl-3 mt-4">
+        <!-- <div class="col-6 col-md-4 col-xl-3 mt-4">
             <div class="card cd">
                 <div class="card-body">
                     <h5 class="card-title title mb-0">Dominos</h5>
@@ -120,7 +120,7 @@
                     <a href="#" class="btn btn-primary w-100 btn-pedido" (click)="verDetalleOrdenDisponible(1)">Ver Detalle</a>
                 </div>
             </div>
-        </div>
+        </div> -->
         <div class="col-sm-12 col-md-4 col-xl-4 ">
             <br><br><br><br>
         </div>

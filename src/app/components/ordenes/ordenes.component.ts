@@ -9,11 +9,15 @@ export class OrdenesComponent implements OnInit {
 
   @Output() onOrdenesTomadas = new EventEmitter();
   @Output() onOrdenesEntregadas = new EventEmitter();
+  @Output() onAppComponent = new EventEmitter();
   regionVisible:any='';
-
+  contadorOrdenesEntregadas:any;
+  contadorOrdenesTomadas:any;
   constructor() { }
 
   ngOnInit(): void {
+    this.contadorOrdenesTomadas = localStorage.getItem('CountOT');
+    this.contadorOrdenesEntregadas = localStorage.getItem('CountOE');
   }
 
   ordenesTomadas(){
@@ -25,5 +29,8 @@ export class OrdenesComponent implements OnInit {
     this.regionVisible="ordenesEntregadas"
     this.onOrdenesEntregadas.emit(this.regionVisible);
   }
-
+  irAtras(){
+    this.regionVisible="ordenesDisponibles"
+    this.onOrdenesEntregadas.emit(this.regionVisible);
+  }
 }
