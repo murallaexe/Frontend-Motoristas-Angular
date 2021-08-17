@@ -5,7 +5,8 @@
                 <h5 class="title pt-4">Ordenes Entregadas</h5>
                 <hr>
             </div>
-            <div>
+            <button type="button" class="btn btn-atras" (click)="irAtras()"> Atras</button>
+            <div style="overflow: auto;">
                 <table class="table">
                     <thead class="thead-light">
                         <tr>
@@ -17,68 +18,12 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Blv Morazan</td>
-                            <td>Entregada</td>
-                            <td><button type="button" class="btn btn-ver">Ver</button></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Javier</td>
-                            <td>Res. Sta Cruz</td>
-                            <td>Entregada</td>
-                            <td><button class="btn btn-ver" >Ver</button></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Victor</td>
-                            <td>Carrizal</td>
-                            <td>Entregada</td>
-                            <td><button class="btn btn-ver" >Ver</button></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Pacho</td>
-                            <td>Blv Morazan</td>
-                            <td>Entregada</td>
-                            <td><button type="button" class="btn btn-ver" >Ver</button></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>JOH</td>
-                            <td>Res. Sta Cruz</td>
-                            <td>Entregada</td>
-                            <td><button class="btn btn-ver" >Ver</button></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Goku</td>
-                            <td>Carrizal</td>
-                            <td>Entregada</td>
-                            <td><button class="btn btn-ver" >Ver</button></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Gohan</td>
-                            <td>Blv Morazan</td>
-                            <td>Entregada</td>
-                            <td><button type="button" class="btn btn-ver" >Ver</button></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Bulma</td>
-                            <td>Res. Sta Cruz</td>
-                            <td>Entregada</td>
-                            <td><button class="btn btn-ver" >Ver</button></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Dende</td>
-                            <td>Carrizal</td>
-                            <td>Entregada</td>
-                            <td><button class="btn btn-ver" >Ver</button></td>
+                        <tr *ngFor="let orden of ordenesCompletadas; let indice= index">
+                            <th scope="row">{{indice+1}}</th>
+                            <td>{{orden.nombreCliente}}</td>
+                            <td>{{orden.direccioncliente}}</td>
+                            <td>{{orden.estadoOrden}}</td>
+                            <td><button type="button" class="btn btn-ver" (click)="verOrdenTomada(orden)">Ver</button></td>
                         </tr>
                     </tbody>
                 </table>

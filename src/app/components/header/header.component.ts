@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { faTruck } from '@fortawesome/free-solid-svg-icons'; 
+import { faTruck,faPowerOff } from '@fortawesome/free-solid-svg-icons'; 
+import { AuthService } from 'src/app/service/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -8,9 +9,20 @@ import { faTruck } from '@fortawesome/free-solid-svg-icons';
 })
 export class HeaderComponent implements OnInit {
   faTruck = faTruck;
-  constructor() { }
+  ocultarLo:boolean=false;
+  faPowerOff=faPowerOff;
+  constructor(private authService:AuthService) { }
 
   ngOnInit(): void {
   }
-
+  logout(){
+    this.authService.logout();
+  }
+  ocultarLogout(){
+    if(this.ocultarLo==true){
+      this.ocultarLo=false;
+    }else{
+     this.ocultarLo=true; 
+    };
+  }
 }

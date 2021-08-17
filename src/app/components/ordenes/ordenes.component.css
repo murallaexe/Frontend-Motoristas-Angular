@@ -49,3 +49,10 @@
 .dv-img{
     text-align: center;
 }
+.btn-atras{
+    background-color: #fb1d5a;
+    color: white;
+}
+.mt-4Important{
+    margin-top: 0.5rem!important;
+}

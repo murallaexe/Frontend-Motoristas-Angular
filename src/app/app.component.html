@@ -1,34 +1,83 @@
 <app-header></app-header>
-<app-ordenes-disponibles 
+<div class="displayCardTokes col-12" *ngIf="TokenssVisible">
+    <div class="card col-12 col-sm-12 col-md-12 col-lg-6 col-xl-5" style="margin: auto;">
+        <div class="card-header">
+            <strong class="card-title">Serial</strong>
+        </div>
+        <div class="card-body">
+            <div id="pay-invoice">
+                <div class="card-body">
+                    <div class="card-title">
+                        <h3 class="text-center">Copiar el serial para acceder</h3>
+                    </div>
+                    <hr>
+                    <form action="#" method="post" novalidate="novalidate" >
+                        <div class="form-group text-center">
+                            <ul class="list-inline">
+                                <li class="list-inline-item"></li>
+                            </ul>
+                        </div>
+                        <div class="form-group">
+                            <label for="cc-number" class="control-label mb-1">Serial</label>
+                            <!-- <h6>{{tokenss}}</h6> -->
+                            <input id="serialNumber" [(ngModel)]="tokenss"  name="numberSerial" type="tel" class="form-control" value="" data-val="true" data-val-required="Please enter the card number" data-val-cc-number="Please enter a valid card number" placeholder="">
+                            <button (click)="GuardarSerial()">Ingresar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<app-ordenes-disponibles #ordenesDisponible
+    *ngIf="TokenssVisible==false"
     (onVerOrdenes)="verOrdenes($event)" 
     (onVerDetalleOrdenDisponible) = "verDetalleOrdenDisponible($event)"
     [ngClass]="{'visible':regionVisible == 'ordenesDisponibles', 'noVisible':regionVisible!= 'ordenesDisponibles'}">
 </app-ordenes-disponibles>
 <!-- <app-ordenes-disponibles [ngClass]="{'visible':regionVisible == 'ordenesDisponibles', 'noVisible':regionVisible!= 'ordenesDisponibles'}"></app-ordenes-disponibles> -->
 <app-ordenes-tomadas 
+    *ngIf="TokenssVisible==false"
     (onVerDetalleOrdenTomada)="verDetalleOrdenTomada($event)" 
     [ngClass]="{'visible':regionVisible == 'ordenesTomadas', 'noVisible':regionVisible!= 'ordenesTomadas'}">
 </app-ordenes-tomadas>
 
-<app-detalle-orden 
+<app-detalle-orden #ordenesDetalles
+*ngIf="TokenssVisible==false"
+    (onDetalle)="verOrdenes($event)"
     [ngClass]="{'visible':regionVisible == 'detalleOrdenDisponible', 'noVisible':regionVisible!= 'detalleOrdenDisponible'}">
 </app-detalle-orden>
 
 <app-ordenes 
+*ngIf="TokenssVisible==false"
     (onOrdenesTomadas)="verOrdenesTomadas($event)" 
     (onOrdenesEntregadas)="verOrdenesEntregadas($event)" 
     [ngClass]="{'visible':regionVisible == 'ordenes', 'noVisible':regionVisible!= 'ordenes'}">
 </app-ordenes>
 
 <app-ordenes-entregadas 
+*ngIf="TokenssVisible==false"
+(onOrdenes)="verDetalleOrdenEntregada($event)"
     [ngClass]="{'visible':regionVisible == 'ordenesEntregadas', 'noVisible':regionVisible!= 'ordenesEntregadas'}">
 </app-ordenes-entregadas>
-
-<app-detalle-ordenes-tomadas
+<app-detalle-ordenes-entregadas #ordenesDetallesEntregada
+    (onDetallesEntrega)="verDetalleOrdenTomada($event)"
+    *ngIf="TokenssVisible==false"
+    [ngClass]="{'visible':regionVisible == 'detalleOrdenEntregada', 'noVisible':regionVisible!= 'detalleOrdenEntregada'}"
+>
+</app-detalle-ordenes-entregadas>
+<app-detalle-ordenes-tomadas #ordenesDetallesTomadas
+*ngIf="TokenssVisible==false"
+(onDetallesTomadas)="verDetalleOrdenTomada($event)"
 [ngClass]="{'visible':regionVisible == 'detalleOrdenTomada', 'noVisible':regionVisible!= 'detalleOrdenTomada'}">
     
 </app-detalle-ordenes-tomadas>
-<app-footernav></app-footernav>
-<router-outlet></router-outlet>
+<app-footernav *ngIf="TokenssVisible==false"
+    (onFooter)="verDetalleOrdenTomada($event)"
+>    
+</app-footernav>
+<router-outlet ></router-outlet>
+
 
 <!-- detalleOrden -->

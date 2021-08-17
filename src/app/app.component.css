@@ -5,3 +5,8 @@
 .noVisible{
     display: none;
 }
+.displayCardTokes{
+    position: absolute;
+    z-index: 1; 
+    /* right: 0px; */
+}
