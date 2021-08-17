@@ -22,7 +22,9 @@ export class OrdenesService {
   }
   estadosOrdenes(idOrden:any,informacion:any):Observable<any>{
     return this.httpClient.put(`http://localhost:8888/ordenes/${idOrden}/CambiosEstadoOrdenes/`,{
-      estadoOrden:informacion,
+      estadoOrden:informacion.estado,
+      precio:informacion.precio
     });
   } 
+  
 }

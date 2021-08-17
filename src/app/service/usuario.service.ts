@@ -16,7 +16,8 @@ export class UsuarioService {
   }
   cambiarEstadoCliente(idUsuario:any,idOrden:any,informacion:any):Observable<any>{
     return this.httpClient.put(`http://localhost:8888/usuarios/${idUsuario}/CambiosEstadoOrdenes/${idOrden}`,{
-      estadoOrden:informacion
+      estadoOrden:informacion.estado,
+      precio:informacion.precio
     })
   }
   

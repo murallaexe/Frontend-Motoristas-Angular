@@ -14,7 +14,7 @@
                     <option value="en camino">En camino</option>
                     <option value="completada">Completada</option>
                 </select>
-                <h6><a class="titles">Descripcion Pedido</a></h6>
+                <h6><a class="titles">Descripcion Pedido</a>{{detalles.descripcionPedido}}</h6>
                 <h6><a class="titles">Cantidad: </a> {{detalles.cantidadProducto}}</h6>
                 <h6><a class="titles">Fecha entrega: </a> {{detalles.tiempoEntrega}}</h6>
             </div>
@@ -37,6 +37,11 @@
                         <h5 class="titles">Metodo de Pago</h5>
                         <p>{{detalles.metodoPago}}</p>
                         <!-- <p>Visa ****</p> -->
+                    </div>
+                    <div class="col-12" *ngIf="detalles.precioProducto==null">
+                        <h5 class="titles">factura de la compra</h5>
+                        <p> Precio: por definir</p>
+                        <input type="number" class="form-control" name="" [(ngModel)]="PrecioPrducto" id="">
                     </div>
                     <div class="col-12">
                         <h5 class="titles">Resumen del Pedido</h5>
