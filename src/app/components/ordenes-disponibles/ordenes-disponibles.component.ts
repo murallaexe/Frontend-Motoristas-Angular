@@ -13,7 +13,7 @@ export class OrdenesDisponiblesComponent implements OnInit {
   nombreMotorista:String="";
   faMapMaker = faMapMarker;
   regionVisible:string=""
-  ordenesArray:any;
+  ordenesArray:any=[];
   constructor(
     private ordenesService:OrdenesService
   ){ }
@@ -21,8 +21,15 @@ export class OrdenesDisponiblesComponent implements OnInit {
   ngOnInit(): void {
     this.ordenesService.obtenerOrdenes().subscribe(
       res=>{
-        this.ordenesArray = res;
-        // console.log(this.ordenesArray);
+        // console.log(res);
+        var indice=0;
+        for(var i=0;i<res.length;i++){
+          if(res[i].estadoOrden=='origen'){
+            this.ordenesArray[indice]=res[i];
+            indice++;
+          };
+        };
+        console.log(this.ordenesArray);
       },
       error=>{
         console.log(error);
