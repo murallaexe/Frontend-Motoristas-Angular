@@ -13,12 +13,14 @@ export class MotoristaService {
   }
   cambiarEstadoCliente(idUsuario:any,idOrden:any,informacion:any):Observable<any>{
     return this.httpClient.put(`http://localhost:8888/usuarios/${idUsuario}/CambiosEstadoOrdenes/${idOrden}`,{
-      estadoOrden:informacion.estadoOrden
+      estadoOrden:informacion.estadoOrden,
+      precio:informacion.precio
     })
   }
   cambiarEstadoMotoristaOrden(idUsuario:any,idOrden:any,informacion:any):Observable<any>{
     return this.httpClient.put(`http://localhost:8888/usuarios/${idUsuario}/CambiosEstadoOrdenes/${idOrden}/motorista`,{
-      estadoOrden:informacion
+      estadoOrden:informacion.estado,
+      precio:informacion.precio
     })
   }
   guardarOrdenesMotorista(idUsuario:any,informacion:any):Observable<any>{

@@ -26,7 +26,7 @@ export class OrdenesTomadasComponent implements OnInit {
             result=>{
               var indice=0;
               for(var i=0;i<result.ordenes.length;i++){
-                if(result.ordenes[i].estadoOrden!='completada'){
+                if(result.ordenes[i].estadoOrden!='destino'){
                   this.ordenesTomadas[indice]=result.ordenes[i];
                   indice=indice+1;
                 }

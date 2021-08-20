@@ -13,8 +13,11 @@ export class DetalleOrdenesTomadasComponent implements OnInit {
   @Output() onDetallesTomadas =new EventEmitter();
 
   ordenTomada:any=[]
-  selecionarCambioEstado:string="";
+  selecionarCambioEstado:string="tomada";
   idMotorista:string="";
+  PrecioPrducto:number=0;
+  precioObtenido:string="";
+  precioCambio:any;
   constructor(
     private motoristaService:MotoristaService,
     private authService:AuthService,
@@ -26,10 +29,11 @@ export class DetalleOrdenesTomadasComponent implements OnInit {
 
   }
   dataDeAppComponent(data:any,idMotorista:any){
-    // console.log(data);
-    // console.log(idMotorista);
+    console.log(data);
+    console.log(idMotorista);
     this.idMotorista=idMotorista;
     this.ordenTomada[0]=data;
+    this.precioObtenido=data.precioProducto;
   }
   irAtras(){
     this.onDetallesTomadas.emit({url:"ordenesTomadas",data:'datas'});
@@ -37,6 +41,12 @@ export class DetalleOrdenesTomadasComponent implements OnInit {
   Guardarcambio(){
     // console.log(this.selecionarCambioEstado);
     //var arrayPedidosCliente;
+    this.precioCambio;
+    if(this.precioObtenido==null){
+      this.precioCambio=this.PrecioPrducto;
+    }else{
+      this.precioCambio=this.precioObtenido;
+    }
     var idOrdenMotorista;
     this.motoristaService.obtenerInformacionMotorista(this.idMotorista).subscribe(
       res=>{
@@ -47,7 +57,7 @@ export class DetalleOrdenesTomadasComponent implements OnInit {
             idOrdenMotorista=pedidos._id;
             //this.motoristaService.cambiarEstadoCliente(this.idMotorista)
             //console.log("pedido es:", idOrdenMotorista);
-            this.motoristaService.cambiarEstadoMotoristaOrden(this.idMotorista,idOrdenMotorista,this.selecionarCambioEstado).subscribe(
+            this.motoristaService.cambiarEstadoMotoristaOrden(this.idMotorista,idOrdenMotorista,{estado:this.selecionarCambioEstado,precio:this.precioCambio}).subscribe(
               result=>{
                 //console.log(result);
               },
@@ -67,7 +77,7 @@ export class DetalleOrdenesTomadasComponent implements OnInit {
           if(this.ordenTomada[0].idOrden==pedidos.idOrden){
             idOrdencliente=pedidos._id
             // console.log(idOrdencliente);
-            this.usuarioService.cambiarEstadoCliente(this.ordenTomada[0].idCliente,idOrdencliente,this.selecionarCambioEstado).subscribe(
+            this.usuarioService.cambiarEstadoCliente(this.ordenTomada[0].idCliente,idOrdencliente,{estado:this.selecionarCambioEstado,precio:this.precioCambio}).subscribe(
               result=>{
                 // console.log(result)
               },
@@ -80,7 +90,7 @@ export class DetalleOrdenesTomadasComponent implements OnInit {
       },
       error=>console.log(error)
     );
-    this.ordenesService.estadosOrdenes(this.ordenTomada[0].idDatabaseOrden,this.selecionarCambioEstado).subscribe(
+    this.ordenesService.estadosOrdenes(this.ordenTomada[0].idDatabaseOrden,{estado:this.selecionarCambioEstado,precio:this.precioCambio}).subscribe(
     res=>{
       // console.log(res);
       location.reload();
