@@ -1,4 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
+
 import { AuthService } from 'src/app/service/auth.service';
 import { MotoristaService } from 'src/app/service/motorista.service';
 import { OrdenesService } from 'src/app/service/ordenes.service';
@@ -15,6 +17,9 @@ export class DetalleOrdenComponent implements OnInit {
   ordenesDetallesArray:any = [];
   dataMotoristaArray:any = [];
   idMotorista:any="";
+  ocultarMore:boolean=false;
+  ocultarProduct:boolean=false;
+  faAngleDown=faAngleDown;
   constructor( 
     private motoristaService:MotoristaService,
     private ordenesService:OrdenesService,
@@ -30,14 +35,21 @@ export class DetalleOrdenComponent implements OnInit {
         console.log(error);
       }
     )
+    
   }
   VerDetallesPadre(data:any,dataMotorista:any){
-    // console.log(data,dataMotorista);
+    //console.log(data.producto);
     this.dataMotoristaArray[0]=dataMotorista;
     this.ordenesDetallesArray[0]=data;
     this.ordenesDetallesArray[0].cantidadProducto=parseInt(data.cantidadProducto);
     this.ordenesDetallesArray[0].precioProducto=parseInt(data.precioProducto);
     this.ordenesDetallesArray[0].comision=parseInt(data.comision);
+    // console.log(this.ordenesDetallesArray);
+    if(data.producto=="Pedido especial"){
+      this.ocultarMore=true;
+    }else{
+      this.ocultarMore=false;
+    }
   }
   irAtras(){
     this.onDetalle.emit("ordenesDisponibles");
@@ -61,6 +73,7 @@ export class DetalleOrdenComponent implements OnInit {
       telefonCliente:this.ordenesDetallesArray[0].telefonCliente,
       direccioncliente:this.ordenesDetallesArray[0].direccioncliente,
 
+      productos:this.ordenesDetallesArray[0].productos,
       metodoPago:this.ordenesDetallesArray[0].metodoPago
     }
     //guardar data del motorista
@@ -109,5 +122,12 @@ export class DetalleOrdenComponent implements OnInit {
     )
 
     // console.log(putOrdenes);
+  }
+  ocultarProductos(){
+    if(this.ocultarProduct==true){
+      this.ocultarProduct=false;
+    }else{
+      this.ocultarProduct=true;
+    }
   }
 }

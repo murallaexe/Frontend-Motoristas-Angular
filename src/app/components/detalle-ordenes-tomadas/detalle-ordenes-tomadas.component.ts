@@ -1,4 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
+
 import { AuthService } from 'src/app/service/auth.service';
 import { MotoristaService } from 'src/app/service/motorista.service';
 import { OrdenesService } from 'src/app/service/ordenes.service';
@@ -18,6 +20,9 @@ export class DetalleOrdenesTomadasComponent implements OnInit {
   PrecioPrducto:number=0;
   precioObtenido:string="";
   precioCambio:any;
+  ocultarMore:boolean=false;
+  ocultarProduct:boolean=false;
+  faAngleDown=faAngleDown;
   constructor(
     private motoristaService:MotoristaService,
     private authService:AuthService,
@@ -29,11 +34,17 @@ export class DetalleOrdenesTomadasComponent implements OnInit {
 
   }
   dataDeAppComponent(data:any,idMotorista:any){
-    console.log(data);
-    console.log(idMotorista);
+    // console.log(data);
+    // console.log(idMotorista);
     this.idMotorista=idMotorista;
     this.ordenTomada[0]=data;
+    // console.log(this.ordenTomada[0]);
     this.precioObtenido=data.precioProducto;
+    if(data.producto=="Pedido especial"){
+      this.ocultarMore=true;
+    }else{
+      this.ocultarMore=false;
+    }
   }
   irAtras(){
     this.onDetallesTomadas.emit({url:"ordenesTomadas",data:'datas'});
@@ -99,6 +110,13 @@ export class DetalleOrdenesTomadasComponent implements OnInit {
       // console.log(error);
     }
     )
+  }
+  ocultarProductos(){
+    if(this.ocultarProduct==true){
+      this.ocultarProduct=false;
+    }else{
+      this.ocultarProduct=true;
+    }
   }
   
 }

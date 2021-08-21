@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { DetalleOrdenComponent } from './components/detalle-orden/detalle-orden.component';
 import { DetalleOrdenesEntregadasComponent } from './components/detalle-ordenes-entregadas/detalle-ordenes-entregadas.component';
 import { DetalleOrdenesTomadasComponent } from './components/detalle-ordenes-tomadas/detalle-ordenes-tomadas.component';
+import { HeaderComponent } from './components/header/header.component';
 import { OrdenesDisponiblesComponent } from './components/ordenes-disponibles/ordenes-disponibles.component';
 import { AuthService } from './service/auth.service';
 import { MotoristaService } from './service/motorista.service';
@@ -17,6 +18,7 @@ export class AppComponent implements OnInit{
   @ViewChild('ordenesDetalles') detalleOrdenComponent!:DetalleOrdenComponent;
   @ViewChild('ordenesDetallesTomadas') detalleOrdenesTomadasComponent!:DetalleOrdenesTomadasComponent;
   @ViewChild('ordenesDetallesEntregada') detalleOrdenesEntregadasComponent!:DetalleOrdenesEntregadasComponent;
+  @ViewChild('header') headerComponent!:HeaderComponent;
 
   title = 'Frontend-Motorista-Angular';
   regionVisible: string = "ordenesDisponibles";
@@ -37,8 +39,10 @@ export class AppComponent implements OnInit{
       this.TokenssVisible=false;
       this.authService.authe(token).subscribe(
         res=>{
-          //console.log(res);
+          console.log(res);
           this.idMotorista=res.authData.data._id;
+          this.headerComponent.NombreUsuario=res.authData.data.nombreUsuario;
+          this.headerComponent.imagenFoto=res.authData.data.UrlFoto;
           this.ordenesDisponiblesComponent.obtenerDataPadre(res.authData.data.nombreUsuario,'data');
           // if(res.authData.data.tipoUsuario=="motorista"){
           //   this.TokenssVisible=false;

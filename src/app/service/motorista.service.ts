@@ -40,6 +40,7 @@ export class MotoristaService {
       telefonCliente:informacion.telefonCliente,
       direccioncliente:informacion.direccioncliente,
       metodoPago:informacion.metodoPago,
+      productos:informacion.productos
     })
   }
   obtenerRegistro(idUsuario:any):Observable<any>{
