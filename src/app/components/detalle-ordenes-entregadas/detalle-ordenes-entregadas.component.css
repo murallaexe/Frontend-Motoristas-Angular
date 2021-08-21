@@ -23,3 +23,19 @@
     color: red;
     font-weight: bolder;
 }
+.buttonMore{
+    margin-left: auto;
+    display: block;   
+}
+.thead-EDWin{
+    color: white;
+    background-color: #FB1D5A !important;
+    
+}
+.visible{
+    display: block;
+}
+
+.noVisible{
+    display: none;
+}

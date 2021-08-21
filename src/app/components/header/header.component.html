@@ -4,8 +4,11 @@
             <img src="../../../assets/img/logo blanco.png" alt="" width="30" height="24" class="d-inline-block align-text-top img-nav">
         </a>
         <form action="" class="d-flex">
+            <h4 class="h4Header">
+                {{NombreUsuario}}
+            </h4>
             <button class="btn btn-sm collapsed btn-user" (click)="ocultarLogout()">
-                <img class="img-profile" src="../../../assets/img/roshi.jpg" alt="">
+                <img class="img-profile" src="../../../assets/{{imagenFoto}}" alt="">
             </button>
             <!-- <button class="btn btn-sm collapsed btn-user">
                 <fa-icon [icon]="faTruck"></fa-icon>

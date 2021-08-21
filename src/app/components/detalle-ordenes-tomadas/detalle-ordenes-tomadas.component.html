@@ -18,6 +18,31 @@
                 <h6><a class="titles">Fecha entrega: </a> {{detalles.tiempoEntrega}}</h6>
             </div>
         </div>
+        <div class="col-12 mt-4" [ngClass]="{'visible':ocultarMore == false, 'noVisible':ocultarMore!= true}">
+            <div class="bd">
+                <button class="btn buttonMore" (click)="ocultarProductos()">Ver mas <fa-icon [icon]="faAngleDown"></fa-icon></button>
+                <div style="overflow: auto;" [ngClass]="{'visible':ocultarProduct == false, 'noVisible':ocultarProduct!= true}">
+                    <table class="table" >
+                        <thead class="thead-EDWin">
+                            <tr>
+                                <th>Empresa</th>
+                                <th>Producto</th>
+                                <th>Cantidad</th>
+                                <th>Precio</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let ordenes of ordenTomada[0].productos">
+                                <td>{{ordenes.empresa}}</td>
+                                <td>{{ordenes.producto}}</td>
+                                <td>{{ordenes.cantidadProducto}}</td>
+                                <td>{{ordenes.precioProducto}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
         <div class="col-12 mt-4">
             <div class="bd">
                 <h5 class="titles">Informacion Cliente</h5>

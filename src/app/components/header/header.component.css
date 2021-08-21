@@ -14,3 +14,10 @@
 .btn-user{
     background-color: #f6678e;
 }
+.h4Header{
+    margin-top: 7px;
+    margin-right: 10px;
+    text-transform: capitalize;
+    color: white;
+    font-weight: 800;
+}

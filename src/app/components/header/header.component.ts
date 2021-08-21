@@ -11,9 +11,12 @@ export class HeaderComponent implements OnInit {
   faTruck = faTruck;
   ocultarLo:boolean=false;
   faPowerOff=faPowerOff;
+  imagenFoto:string="";
+  NombreUsuario:String="";
   constructor(private authService:AuthService) { }
 
   ngOnInit(): void {
+    console.log(this.imagenFoto,this.NombreUsuario);
   }
   logout(){
     this.authService.logout();
@@ -25,4 +28,5 @@ export class HeaderComponent implements OnInit {
      this.ocultarLo=true; 
     };
   }
+
 }
