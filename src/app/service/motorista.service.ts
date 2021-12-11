@@ -9,22 +9,22 @@ export class MotoristaService {
 
   constructor( private httpClient:HttpClient) { }
   obtenerInformacionMotorista(idUsuario:any):Observable<any>{
-    return this.httpClient.get(`http://localhost:8888/usuarios/${idUsuario}/motorista`,{});
+    return this.httpClient.get(`vejadelivery.herokuapp.com/usuarios/${idUsuario}/motorista`,{});
   }
   cambiarEstadoCliente(idUsuario:any,idOrden:any,informacion:any):Observable<any>{
-    return this.httpClient.put(`http://localhost:8888/usuarios/${idUsuario}/CambiosEstadoOrdenes/${idOrden}`,{
+    return this.httpClient.put(`vejadelivery.herokuapp.com/usuarios/${idUsuario}/CambiosEstadoOrdenes/${idOrden}`,{
       estadoOrden:informacion.estadoOrden,
       precio:informacion.precio
     })
   }
   cambiarEstadoMotoristaOrden(idUsuario:any,idOrden:any,informacion:any):Observable<any>{
-    return this.httpClient.put(`http://localhost:8888/usuarios/${idUsuario}/CambiosEstadoOrdenes/${idOrden}/motorista`,{
+    return this.httpClient.put(`vejadelivery.herokuapp.com/usuarios/${idUsuario}/CambiosEstadoOrdenes/${idOrden}/motorista`,{
       estadoOrden:informacion.estado,
       precio:informacion.precio
     })
   }
   guardarOrdenesMotorista(idUsuario:any,informacion:any):Observable<any>{
-    return this.httpClient.post(`http://localhost:8888/usuarios/${idUsuario}/motorista/ordenes`,{
+    return this.httpClient.post(`vejadelivery.herokuapp.com/usuarios/${idUsuario}/motorista/ordenes`,{
       idDatabaseOrden:informacion.idDatabaseOrden,
       idCliente:informacion.idCliente,
       idOrden:informacion.idOrden,
@@ -44,6 +44,6 @@ export class MotoristaService {
     })
   }
   obtenerRegistro(idUsuario:any):Observable<any>{
-    return this.httpClient.get(`http://localhost:8888/usuarios/${idUsuario}/registro`,{});
+    return this.httpClient.get(`vejadelivery.herokuapp.com/usuarios/${idUsuario}/registro`,{});
   }
 }
