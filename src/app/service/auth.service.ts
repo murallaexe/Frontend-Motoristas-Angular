@@ -18,7 +18,7 @@ export class AuthService {
   }
   authe(informacion:any):Observable<any>{
     // return informacion;
-    return this.httpClient.post(`vejadelivery.herokuapp.com/usuarios/posts`,{
+    return this.httpClient.post(`https://vejadelivery.herokuapp.com/usuarios/posts`,{
       Authorization: informacion.token
     })
   }
@@ -27,6 +27,6 @@ export class AuthService {
   }
   logout(){
     localStorage.removeItem('token');
-    location.href= ('vejadelivery.herokuapp.com/VejaDelivery/AppCustomer');
+    location.href= ('https://vejadelivery.herokuapp.com/VejaDelivery/AppCustomer');
   }
 }
